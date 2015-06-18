@@ -42,6 +42,10 @@
 - explore: vw_off_curve_comparison
 
 - explore: vw_payments
+  joins:
+    - join: vw_loans
+      relationship: many_to_one
+      sql_on: ${vw_loans.id} = ${vw_payments.loan_id} 
 
 - explore: vw_payments_matched
 
