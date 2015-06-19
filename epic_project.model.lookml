@@ -38,18 +38,6 @@
 - explore: vw_loan_history
 
 - explore: vw_loans
-  joins:
-    - join: vw_loan_history
-      relationship: many_to_one
-      sql_on: ${vw_loans.current_history_id} = ${vw_loan_history.id} 
-
-    - join: vw_payments
-      relationship: many_to_one
-      sql_on: ${vw_loans.id} = ${vw_payments.loan_id} 
-      
-    - join: vw_client
-      relationship: many_to_one
-      sql_on: ${vw_loans.debtor_client_id} = ${vw_client.client_id}
       
 - explore: vw_off_curve_comparison
 
@@ -74,4 +62,3 @@
 - explore: vw_rpt_payments_today
 
 - explore: vw_underwriting
-
