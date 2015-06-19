@@ -731,6 +731,10 @@
   - measure: count
     type: count
     drill_fields: detail*
+    
+  - measure: sum_sign_principal
+    type: sum
+    sql: ${calc_sign_principal}
 
 
   # ----- Sets of fields for drilling ------
