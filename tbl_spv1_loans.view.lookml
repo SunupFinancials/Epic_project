@@ -8,8 +8,8 @@
   - dimension: loan_id
     sql: ${TABLE}.LOAN_Id
 
-  - dimension: no
-    sql: ${TABLE}.No
+#  - dimension: no
+#    sql: ${TABLE}.No
 
   - dimension_group: transfer
     type: time
