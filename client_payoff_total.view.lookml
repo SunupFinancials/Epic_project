@@ -16,6 +16,14 @@
     sql: ${TABLE}.FullName
     label: 'Customer Name'
     
+  - dimension: nsf_late_fees
+    sql: ${TABLE}.NSFLateFees
+    label: 'NSF & Late Fees'
+    
+  - dimension: pd_payoff_total
+    sql: ${TABLE}.PDPayoffTotal
+    label: 'Payday Payoff Total'
+    
   - measure: count
     type: count
     drill_fields: [full_name]
