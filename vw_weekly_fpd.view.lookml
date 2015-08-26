@@ -17,10 +17,13 @@
     drill_fields: []
 
   - measure: m_total_loans
-    type: sum
+    type: count
     sql: ${TABLE}.TotalLoans
   
   - measure: m_fpd
-    type: sum
+    type: count
     sql: ${TABLE}.FPD
-    
+  
+  - measure: m_vintage_aged
+    type: count
+    sql: ${TABLE}.VintageAged
