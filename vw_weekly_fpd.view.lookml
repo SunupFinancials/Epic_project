@@ -23,3 +23,4 @@
   - measure: m_fpd
     type: sum
     sql: ${TABLE}.FPD
+    
