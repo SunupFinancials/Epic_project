@@ -17,13 +17,13 @@
     drill_fields: []
 
   - measure: m_total_loans
-    type: count
+    type: max
     sql: ${TABLE}.TotalLoans
   
   - measure: m_fpd
-    type: count
+    type: max
     sql: ${TABLE}.FPD
   
   - measure: m_vintage_aged
-    type: count
+    type: max
     sql: ${TABLE}.VintageAged
