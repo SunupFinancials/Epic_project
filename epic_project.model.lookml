@@ -63,6 +63,8 @@
 
 - explore: vw_underwriting
 
+- explore: vw_weekly_fpd
+
 - explore: client_payoff_total
   always_filter:
     display_number: '000000000-00'
