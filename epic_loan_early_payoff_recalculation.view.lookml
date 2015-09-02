@@ -53,8 +53,8 @@
     
   - dimension: nextpaydaypayoff
     label: 'Next Payday Payoff Amount'
-    value_format: '$   #,##0.00'
     sql: ${TABLE}.nextpaydaypayoff
+    value_format: '$   #,##0.00'
 
   - dimension: unpaidnsflatefee
     label: 'NSF & Late Fees'
