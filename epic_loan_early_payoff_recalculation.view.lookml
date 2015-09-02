@@ -22,6 +22,7 @@
   - filter: displaynumber_f
     label: 'Account Filter'
     type: string
+    suggestions: [000000000-00]
   
   - measure: count
     type: count
