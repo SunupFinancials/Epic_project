@@ -66,5 +66,3 @@
 - explore: vw_weekly_fpd
 
 - explore: loan_new_payoff
-  always_filter:
-    displaynumber: '000000000-00'
