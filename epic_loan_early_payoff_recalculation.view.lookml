@@ -51,7 +51,8 @@
     label: 'Next Payment Due Date'
     sql: ${TABLE}.nextpaymentdate
     
-  - dimension: nextpaydaypayoff
+  - measure: nextpaydaypayoff
+    type: sum
     label: 'Next Payday Payoff Amount'
     sql: ${TABLE}.nextpaydaypayoff
     value_format: '$   #,##0.00'
