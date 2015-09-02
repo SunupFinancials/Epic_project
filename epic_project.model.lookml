@@ -65,6 +65,8 @@
 
 - explore: vw_weekly_fpd
 
+- explore: epic_loan_early_payoff_recalculation
+
 - explore: client_payoff_total
   always_filter:
     display_number: '000000000-00'
