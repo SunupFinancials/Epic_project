@@ -9,7 +9,8 @@
           ,NewPayoffAmount
           ,DaysTillPayday 
           ,NextPaydayPayoff
-      FROM [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] ({% condition displaynumber_f %} EpicLoanEarlyPayoffReCalculation.displaynumber {% endcondition %})
+      FROM [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] 
+      WHERE ({% condition displaynumber_f %} EpicLoanEarlyPayoffReCalculation.displaynumber {% endcondition %})
 
   fields:
   - filter: displaynumber_f
