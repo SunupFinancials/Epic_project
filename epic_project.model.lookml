@@ -66,7 +66,5 @@
 - explore: vw_weekly_fpd
 
 - explore: loan_new_payoff
-
-- explore: client_payoff_total
   always_filter:
-    display_number: '000000000-00'
+    displaynumber: '000000000-00'
