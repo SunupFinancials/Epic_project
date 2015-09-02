@@ -65,7 +65,7 @@
 
 - explore: vw_weekly_fpd
 
-- explore: epic_loan_early_payoff_recalculation
+- explore: loan_new_payoff
 
 - explore: client_payoff_total
   always_filter:

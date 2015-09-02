@@ -1,16 +1,22 @@
-- view: epic_loan_early_payoff_recalculation
+- view: loan_new_payoff
   derived_table:
     sql: |
-      SELECT FullName
-          ,DisplayNumber
-          ,NextPaymentDate
-          ,UnpaidNSFLateFee
-          ,CalendarDate
-          ,NewPayoffAmount
-          ,DaysTillPayday 
-          ,NextPaydayPayoff
-      FROM [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] 
-      WHERE ({% condition displaynumber_f %} EpicLoanEarlyPayoffReCalculation.displaynumber {% endcondition %})
+        SELECT FullName
+              ,a.DisplayNumber
+              ,NextPaymentDate
+              ,UnpaidNSFLateFee
+              ,CalendarDate
+              ,NewPayoffAmount
+              ,DaysTillPayday 
+              ,NextPaydayPayoff
+          FROM (SELECT TOP 1 DisplayNumber 
+              FROM [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffTotals_STEP2]
+              WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
+             ) as a
+          CROSS APPLY 
+            [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] (a.DisplayNumber)
+
+
 
   fields:
   - filter: displaynumber_f
@@ -23,12 +29,14 @@
     
   - measure: newpayoffamount
     type: sum
-    label: 'Todays Payoff Amount'
+    label: 'Payoff Amount'
+    value_format: '$   #,##0.00'
     sql: ${TABLE}.newpayoffamount
     
   - measure: newpayoffamount_withfees
     type: sum
-    label: 'Todays Payoff Amount w/Fees'
+    label: 'Payoff Amount w/Fees'
+    value_format: '$   #,##0.00'
     sql: ${TABLE}.newpayoffamount+${TABLE}.unpaidnsflatefee
 
   - dimension: fullname
@@ -42,10 +50,15 @@
   - dimension: nextpaymentdate
     label: 'Next Payment Due Date'
     sql: ${TABLE}.nextpaymentdate
+    
+  - dimension: nextpaydaypayoff
+    label: 'Next Payday Payoff Amount'
+    value_format: '$   #,##0.00'
+    sql: ${TABLE}.nextpaydaypayoff
 
   - dimension: unpaidnsflatefee
-    type: number
     label: 'NSF & Late Fees'
+    value_format: '$   #,##0.00'
     sql: ${TABLE}.unpaidnsflatefee
 
   - dimension: calendardate
