@@ -10,11 +10,11 @@
               ,DaysTillPayday 
               ,NextPaydayPayoff
           FROM (SELECT TOP 1 DisplayNumber 
-              FROM [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffTotals_STEP2]
-              WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
-             ) as a
+                FROM [SunUpODStage].[LMSData].[EpicLoanEarlyPayoffData]
+                WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
+                ) as a
           CROSS APPLY 
-            [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] (a.DisplayNumber)
+              [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] (a.DisplayNumber)
 
 
 
