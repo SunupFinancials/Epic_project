@@ -14,6 +14,7 @@
                 ) as a
           CROSS APPLY 
               [EpicLoan_090S].[BCData].[EpicLoanEarlyPayoffReCalculation] (a.DisplayNumber)
+          WHERE CalendarDate >= CAST(GETDATE() as DATE)
 
 
 
