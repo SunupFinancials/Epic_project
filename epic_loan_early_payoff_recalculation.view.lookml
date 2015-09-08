@@ -7,7 +7,6 @@
               ,UnpaidNSFLateFee
               ,CalendarDate
               ,NewPayoffAmount
-              ,DaysTillPayday 
               ,NextPaydayPayoff
           FROM (SELECT TOP 1 DisplayNumber 
                 FROM [SunUpODStage].[LMSData].[EpicLoanEarlyPayoffData]
