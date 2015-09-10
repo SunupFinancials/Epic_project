@@ -66,3 +66,4 @@
 - explore: vw_weekly_fpd
 
 - explore: loan_new_payoff
+- explore: epic_loan_payment_history_forpayoff
