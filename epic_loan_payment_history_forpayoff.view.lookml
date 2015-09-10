@@ -1,7 +1,7 @@
 - view: epic_loan_payment_history_forpayoff
   derived_table:
     sql: |
-          SELECT FullName
+          SELECT b.FullName
                     ,a.DisplayNumber
                     ,b.PaymentLoanid
               ,TransactionEffectiveDate
@@ -10,7 +10,6 @@
               ,DailyInterestRate
               ,AppliedAdjCreditAmount
               ,TotalNSFLateFee
-              ,FullName
               ,FundedAmount
               ,ScheduledPaymentAmount
               ,NumDaysSinceLastPayment
