@@ -9,7 +9,7 @@
               ,NewPayoffAmount
               ,NextPaydayPayoff
           FROM (SELECT TOP 1 DisplayNumber 
-                FROM [SunUpODStage].[LMSData].[EpicLoanEarlyPayoffBaseData]
+                FROM [SunUpODStage].[Stage].[EpicLoanEarlyPayoffBaseData]
                 WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
                 ) as a
           CROSS APPLY 
