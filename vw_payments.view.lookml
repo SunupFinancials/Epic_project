@@ -88,9 +88,9 @@
     drill_fields: [vw_payments_id, reporting_cso_150218.count]
     
   - measure: return_count
-    type: sum                   # SUM (CASE WHEN ${TABLE}.[ReturnDate] IS NULL THEN 0 ELSE 1 END)
+    type: count                 # COUNT(CASE WHEN dimension.return_code IS NOT NULL THEN 1 ELSE NULL END)
     label: 'Count Of Returns'
-    sql: ${TABLE}.[ReturnDate]
+   
 
   
 
