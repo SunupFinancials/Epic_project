@@ -86,4 +86,11 @@
   - measure: count
     type: count
     drill_fields: [vw_payments_id, reporting_cso_150218.count]
+    
+  - measure: return_count
+    type: count                 # COUNT(CASE WHEN dimension.return_code IS NOT NULL THEN 1 ELSE NULL END)
+    label: 'Count Of Returns'
+   
+
+  
 

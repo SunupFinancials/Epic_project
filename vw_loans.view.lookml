@@ -224,4 +224,10 @@
   - measure: count
     type: count
     drill_fields: [vw_loans_id, store_name, lead_provider_name]
+    
+  - measure: avg_apr
+    type: avg
+    label: 'Annual Percentage Rate'
+    sql: ${TABLE}.AnnualPercentRate
+    decimals: 2
 
