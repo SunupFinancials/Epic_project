@@ -3,9 +3,9 @@
     sql: |
          SELECT FullName
               ,a.DisplayNumber
-              ,NextPaymentDate = b.[NextPaymentDueDate]
+              ,NextPaymentDate = CAST(b.[NextPaymentDueDate] as DATE)
               ,UnpaidNSFLateFee = b.[TotalNSFLateFee]
-              ,CalendarDate = b.PaymentDueDate
+              ,CalendarDate = CAST(b.PaymentDueDate as DATE)
               ,NewPayoffAmount = b.[EndingBalance]
               ,NextPaydayPayoff = 0.00
           FROM (SELECT TOP 1 DisplayNumber 
