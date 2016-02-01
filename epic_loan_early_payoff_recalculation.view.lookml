@@ -26,6 +26,24 @@
     type: count
     drill_fields: detail*
     
+  - measure: currentbalanceamount
+    type: sum
+    label: 'Current Balance Amount'
+    value_format: '$   #,##0.00'
+    sql: ${TABLE}.currentbalanceamount
+    
+  - measure: unpaidnsflatefee
+    type: sum
+    label: 'Unpaid NSF/Late Fess Amount'
+    value_format: '$   #,##0.00'
+    sql: ${TABLE}.unpaidnsflatefee
+  
+  - measure: proratedpayoff
+    type: sum
+    label: 'Prorated CSO Amount'
+    value_format: '$   #,##0.00'
+    sql: ${TABLE}.proratedpayoff
+    
   - measure: totalpayoffamount
     type: sum
     label: 'Payoff Amount'
@@ -61,11 +79,6 @@
     label: 'Next Payday Payoff Amount'
     sql: ${TABLE}.nextpaydaypayoff
     value_format: '$   #,##0.00'
-
-  - dimension: unpaidnsflatefee
-    label: 'NSF & Late Fees'
-    value_format: '$   #,##0.00'
-    sql: ${TABLE}.unpaidnsflatefee
 
   - dimension: calendardate
     label: 'Desired Payoff Date'
