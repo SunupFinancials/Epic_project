@@ -3,7 +3,7 @@
     sql: |
           SELECT [FullName]
               ,DisplayNumber
-              ,NextPaymentDate = CAST(x.[NextPaymentDate] as DATE)
+              ,NextPaymentDate = CAST([NextPaymentDate] as DATE)
               ,UnpaidNSFLateFee = 0.00
               ,CalendarDate = CAST(PaymentDueDate as DATE)
               ,NewPayoffAmount = [EndingBalance]
