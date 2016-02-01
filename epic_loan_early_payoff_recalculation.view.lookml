@@ -8,7 +8,7 @@
               ,CalendarDate = CAST(PaymentDueDate as DATE)
               ,NewPayoffAmount = [EndingBalance]
               ,NextPaydayPayoff = 0.00
-          FROM [SUMaster].[vw_CustomerLoanStatementOfAccountToDate] 
+          FROM [SunUpODStage].[SUMaster].[vw_CustomerLoanStatementOfAccountToDate] 
           WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
 
 
