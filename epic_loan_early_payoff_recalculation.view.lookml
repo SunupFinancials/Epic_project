@@ -26,18 +26,24 @@
     type: count
     drill_fields: detail*
     
-  - measure: newpayoffamount
+  - measure: totalpayoffamount
     type: sum
     label: 'Payoff Amount'
     value_format: '$   #,##0.00'
-    sql: ${TABLE}.newpayoffamount
+    sql: ${TABLE}.totalpayoffamount
     
-  - measure: newpayoffamount_withfees
+  - measure: totalpayoffamount50percent
     type: sum
-    label: 'Payoff Amount w/Fees'
+    label: '50% of Payoff Amount'
     value_format: '$   #,##0.00'
-    sql: ${TABLE}.newpayoffamount+${TABLE}.unpaidnsflatefee
-
+    sql: ${TABLE}.totalpayoffamount50percent
+    
+  - measure: totalpayoffamount25percent
+    type: sum
+    label: '25% of Payoff Amount'
+    value_format: '$   #,##0.00'
+    sql: ${TABLE}.totalpayoffamount25percent
+    
   - dimension: fullname
     label: 'Customer Name'
     sql: ${TABLE}.fullname
