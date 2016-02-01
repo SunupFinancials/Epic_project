@@ -1,21 +1,15 @@
 - view: loan_new_payoff
   derived_table:
     sql: |
-         SELECT FullName
-              ,a.DisplayNumber
-              ,NextPaymentDate = CAST(b.[NextPaymentDueDate] as DATE)
-              ,UnpaidNSFLateFee = b.[TotalNSFLateFee]
-              ,CalendarDate = CAST(b.PaymentDueDate as DATE)
-              ,NewPayoffAmount = b.[EndingBalance]
+          SELECT [FullName]
+              ,DisplayNumber
+              ,NextPaymentDate = CAST(x.[NextPaymentDate] as DATE)
+              ,UnpaidNSFLateFee = 0.00
+              ,CalendarDate = CAST(PaymentDueDate as DATE)
+              ,NewPayoffAmount = [EndingBalance]
               ,NextPaydayPayoff = 0.00
-          FROM (SELECT TOP 1 DisplayNumber 
-              FROM [SunUpODStage].[Stage].[EpicLoanEarlyPayoffBaseData]
-              WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
-              ) as a
-          CROSS APPLY 
-              [SunUpODStage].[LMSData].[EpicLoanEarlyPayoffReCalculation_Details] (a.DisplayNumber) AS b
-          WHERE PaymentDueDate >= CAST(GETDATE() as DATE)
-
+          FROM [SUMaster].[vw_CustomerLoanStatementOfAccountToDate] 
+          WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
 
 
   fields:
