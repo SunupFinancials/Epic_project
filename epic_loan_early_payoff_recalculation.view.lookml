@@ -1,14 +1,18 @@
 - view: loan_new_payoff
   derived_table:
     sql: |
-          SELECT [FullName]
-              ,DisplayNumber
-              ,NextPaymentDate = CAST([NextPaymentDate] as DATE)
-              ,UnpaidNSFLateFee = 0.00
-              ,CalendarDate = CAST(PaymentDueDate as DATE)
-              ,NewPayoffAmount = [EndingBalance]
-              ,NextPaydayPayoff = 0.00
-          FROM [SunUpODStage].[SUMaster].[vw_CustomerLoanStatementOfAccountToDate] 
+          SELECT FullName
+            ,DisplayNumber
+            ,NextPaymentDate = CAST(NextPaymentDate as DATE)
+            ,CalendarDate = CAST(PaymentDueDate as DATE)
+            ,CurrentBalanceAmount = EndingBalance
+            ,NextPaydayPayoff = 0.00
+            ,UnpaidNSFLateFee = OutstandingNsfFee + OutstandingLateFee
+            ,ProratedPayoff = CSOFeePerPayment 
+            ,TotalPayoffAmount = EndingBalance + OutstandingNsfFee + OutstandingLateFee + CSOFeePerPayment
+            ,TotalPayoffAmount50percent = ((EndingBalance + OutstandingNsfFee + OutstandingLateFee + CSOFeePerPayment) *.50)
+            ,TotalPayoffAmount25percent = ((EndingBalance + OutstandingNsfFee + OutstandingLateFee + CSOFeePerPayment) *.25)
+            FROM SunUpODStage.SUMaster.vw_CustomerLoanStatementOfAccountToDate 
           WHERE {% condition displaynumber_f %} displaynumber {% endcondition %}
 
 
