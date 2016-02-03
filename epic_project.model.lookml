@@ -66,3 +66,5 @@
 - explore: vw_weekly_fpd
 
 - explore: loan_new_payoff
+
+- explore: loan_payoff_new
